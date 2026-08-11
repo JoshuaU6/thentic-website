@@ -1,0 +1,112 @@
+export const WHATSAPP_NUMBER = '2348000000000'; // Replace with real number
+
+export const products = [
+  {
+    id: 1,
+    slug: 'lagos-long-island',
+    name: 'Lagos Long Island',
+    type: 'cocktail',
+    price: 8000,
+    tagline: 'Bold and iconic.',
+    description: 'A perfect blend of spirits with a smooth, refreshing finish. Inspired by the heart of Lagos — bold, vibrant, and unforgettable.',
+    flavourNotes: ['Spirits blend', 'Citrus', 'Refreshing finish'],
+    color: '#8B6914',
+    bgGradient: 'from-[#8B6914] to-[#3D2900]',
+    accentLight: '#D4A820',
+    emoji: '🌃',
+  },
+  {
+    id: 2,
+    slug: 'elderflower-gin-tonic',
+    name: 'Elderflower Gin & Tonic',
+    type: 'cocktail',
+    price: 8000,
+    tagline: 'Floral and crisp.',
+    description: 'A delicate mix of gin, elderflower and tonic for a refreshing experience. Elegant, light, and perfectly balanced.',
+    flavourNotes: ['Elderflower', 'Juniper gin', 'Tonic fizz'],
+    color: '#2D5A27',
+    bgGradient: 'from-[#2D5A27] to-[#0D2010]',
+    accentLight: '#5A9E52',
+    emoji: '🌿',
+  },
+  {
+    id: 3,
+    slug: 'whiskey-sour',
+    name: 'Whiskey Sour',
+    type: 'cocktail',
+    price: 8000,
+    tagline: 'Bold and tangy.',
+    description: 'Smooth whiskey with zesty lemon for a perfectly balanced classic. The timeless cocktail, now ready to go anywhere.',
+    flavourNotes: ['Smooth whiskey', 'Zesty lemon', 'Balanced bitters'],
+    color: '#A0501A',
+    bgGradient: 'from-[#A0501A] to-[#3D1A00]',
+    accentLight: '#D4782A',
+    emoji: '🥃',
+  },
+  {
+    id: 4,
+    slug: 'ikoyi-nights',
+    name: 'Ikoyi Nights',
+    type: 'cocktail',
+    price: 8000,
+    tagline: 'Citrusy and vibrant.',
+    description: 'A refreshing blend inspired by Lagos nights and coastal breezes. The spirit of Ikoyi captured in a can — refined, electric, alive.',
+    flavourNotes: ['Tropical citrus', 'Coastal breeze', 'Vibrant finish'],
+    color: '#1A2E5C',
+    bgGradient: 'from-[#1A2E5C] to-[#060D1E]',
+    accentLight: '#3A5EA0',
+    emoji: '🌙',
+  },
+  {
+    id: 5,
+    slug: 'passion-fruit-daiquiri',
+    name: 'Passion Fruit Daiquiri',
+    type: 'cocktail',
+    price: 8000,
+    tagline: 'Tropical and juicy.',
+    description: 'A fruity blend of rum and passion fruit for the ultimate escape. Sweet, tangy, and dangerously drinkable.',
+    flavourNotes: ['Passion fruit', 'White rum', 'Tropical sweetness'],
+    color: '#5C1A6B',
+    bgGradient: 'from-[#5C1A6B] to-[#200828]',
+    accentLight: '#9A38B0',
+    emoji: '🍹',
+  },
+  {
+    id: 6,
+    slug: 'shirley-temple',
+    name: 'Shirley Temple',
+    type: 'mocktail',
+    price: 6000,
+    tagline: 'Sweet and sparkling.',
+    description: 'A timeless favourite with cherry and citrus flavours. Bright, fun, and perfect for any occasion — alcoholic or not.',
+    flavourNotes: ['Cherry', 'Citrus', 'Sparkling finish'],
+    color: '#C41E1E',
+    bgGradient: 'from-[#C41E1E] to-[#500808]',
+    accentLight: '#E84040',
+    emoji: '🍒',
+  },
+  {
+    id: 7,
+    slug: 'citrus-sunset',
+    name: 'Citrus Sunset',
+    type: 'mocktail',
+    price: 6000,
+    tagline: 'Bright and refreshing.',
+    description: 'A citrus blend with tropical notes for the perfect pick-me-up. Sunshine in a can — vibrant, uplifting, and delicious.',
+    flavourNotes: ['Orange citrus', 'Tropical passion', 'Uplifting fizz'],
+    color: '#D4600A',
+    bgGradient: 'from-[#D4600A] to-[#5A2000]',
+    accentLight: '#F0882A',
+    emoji: '🌅',
+  },
+];
+
+export const cocktails = products.filter(p => p.type === 'cocktail');
+export const mocktails = products.filter(p => p.type === 'mocktail');
+
+export function getWhatsAppLink(productName = '') {
+  const msg = productName
+    ? `Hi Thentic! I'd like to order ${productName}. Please share more details.`
+    : `Hi Thentic! I'd like to place an order. Please share more details.`;
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+}
