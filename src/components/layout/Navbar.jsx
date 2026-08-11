@@ -17,30 +17,40 @@ export default function Navbar() {
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 60);
+    fn();
     window.addEventListener('scroll', fn, { passive: true });
     return () => window.removeEventListener('scroll', fn);
   }, []);
 
   useEffect(() => setOpen(false), [pathname]);
 
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [open]);
+
   return (
     <>
       <nav
-        className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
         style={{
-          background: scrolled ? 'rgba(13,13,13,0.92)' : 'transparent',
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 9999,
+          background: scrolled ? 'rgba(13,13,13,0.95)' : 'transparent',
           backdropFilter: scrolled ? 'blur(14px)' : 'none',
+          WebkitBackdropFilter: scrolled ? 'blur(14px)' : 'none',
           borderBottom: scrolled ? '0.5px solid rgba(201,168,76,0.15)' : 'none',
+          transition: 'background 0.4s ease, border-color 0.4s ease',
         }}
       >
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          {/* Logo */}
           <Link to="/" className="flex flex-col items-start leading-none group">
             <span className="font-cinzel font-bold text-xl tracking-[0.2em] gold-text">THENTIC</span>
             <span className="font-script italic text-xs text-gold/70 tracking-widest">Liquor</span>
           </Link>
 
-          {/* Desktop links */}
           <div className="hidden md:flex items-center gap-8">
             {links.map(l => (
               <Link
@@ -59,7 +69,6 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* CTA */}
           <div className="hidden md:flex items-center gap-3">
             <a
               href={getWhatsAppLink()}
@@ -71,26 +80,38 @@ export default function Navbar() {
             </a>
           </div>
 
-          {/* Hamburger */}
           <button
-            className="md:hidden text-cream p-1"
+            className="md:hidden text-cream p-2 -mr-2"
             onClick={() => setOpen(!open)}
-            aria-label="Menu"
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            style={{ zIndex: 10000, position: 'relative' }}
           >
-            {open ? <X size={22} /> : <Menu size={22} />}
+            {open ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </nav>
 
-      {/* Mobile menu */}
       <div
-        className="fixed inset-0 z-40 flex flex-col pt-20 px-6 pb-8 transition-all duration-500 md:hidden"
         style={{
-          background: 'rgba(13,13,13,0.97)',
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          zIndex: 9998,
+          background: 'rgba(13,13,13,0.98)',
           backdropFilter: 'blur(16px)',
+          WebkitBackdropFilter: 'blur(16px)',
+          display: 'flex',
+          flexDirection: 'column',
+          paddingTop: '80px',
+          paddingLeft: '24px',
+          paddingRight: '24px',
+          paddingBottom: '32px',
           opacity: open ? 1 : 0,
           pointerEvents: open ? 'all' : 'none',
           transform: open ? 'translateY(0)' : 'translateY(-8px)',
+          transition: 'opacity 0.3s ease, transform 0.3s ease',
         }}
       >
         <div className="flex flex-col gap-6 mt-8">
