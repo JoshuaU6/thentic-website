@@ -94,7 +94,14 @@ export default function Footer() {
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-muted">
           <p>© 2026 Thentic Liquor. All rights reserved.</p>
-          <p className="font-script italic text-gold/40">Premium. Timeless. Unforgettable.</p>
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 rounded-full border border-muted/40 flex items-center justify-center flex-shrink-0">
+              <span className="text-[9px] font-bold text-muted/70">18+</span>
+            </div>
+            <p className="font-cinzel text-[10px] tracking-[0.12em] uppercase text-muted/70">
+              Please enjoy responsibly.
+            </p>
+          </div>
         </div>
       </div>
     </footer>
