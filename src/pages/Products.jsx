@@ -22,7 +22,7 @@ export default function Products() {
   }
 
   return (
-    <main className="min-h-screen pt-28 pb-24 max-w-7xl mx-auto px-6">
+    <main className="min-h-screen pt-24 sm:pt-28 pb-16 sm:pb-24 max-w-7xl mx-auto px-4 sm:px-6">
       {/* Header */}
       <div ref={headRef} className="section-reveal text-center mb-12">
         <div className="font-cinzel text-[11px] tracking-[0.3em] uppercase text-gold/60 mb-3">Premium Ready-To-Drink</div>
@@ -32,7 +32,7 @@ export default function Products() {
       </div>
 
       {/* Filter tabs */}
-      <div className="flex justify-center gap-3 mb-12">
+      <div className="flex justify-center flex-wrap gap-2 sm:gap-3 mb-8 sm:mb-12">
         {filters.map(f => (
           <button
             key={f}
@@ -57,7 +57,7 @@ export default function Products() {
       </div>
 
       {/* Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6">
         {filtered.map((product, i) => (
           <ProductCard key={product.id} product={product} staggerIndex={i} />
         ))}

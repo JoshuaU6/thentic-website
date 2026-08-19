@@ -14,6 +14,7 @@ export const products = [
     color: '#8B6914',
     accentLight: '#D4A820',
     image: '/products/lagos-long-island.jpg',
+    comingSoon: false,
   },
   {
     id: 2,
@@ -26,7 +27,8 @@ export const products = [
     flavourNotes: ['Elderflower', 'Juniper gin', 'Tonic fizz'],
     color: '#2D5A27',
     accentLight: '#5A9E52',
-    image: null,
+    image: '/products/elderflower-gin-tonic.jpg',
+    comingSoon: false,
   },
   {
     id: 3,
@@ -40,6 +42,7 @@ export const products = [
     color: '#A0501A',
     accentLight: '#D4782A',
     image: '/products/whiskey-sour.jpg',
+    comingSoon: false,
   },
   {
     id: 4,
@@ -53,6 +56,7 @@ export const products = [
     color: '#1A2E5C',
     accentLight: '#3A5EA0',
     image: '/products/ikoyi-nights.jpg',
+    comingSoon: false,
   },
   {
     id: 5,
@@ -66,6 +70,7 @@ export const products = [
     color: '#7B1A8B',
     accentLight: '#B040D0',
     image: '/products/passion-fruit-mojito.jpg',
+    comingSoon: false,
   },
   {
     id: 6,
@@ -74,11 +79,12 @@ export const products = [
     type: 'cocktail',
     price: 8000,
     tagline: 'Luxury in every sip.',
-    description: 'A refined blend of premium tequila with natural flavours, delivering a smooth, vibrant and clean refreshing finish. Perfectly balanced and designed to elevate every celebration.',
+    description: 'A refined blend of premium tequila with natural flavours, delivering a smooth, vibrant and clean refreshing finish. Perfectly balanced for every celebration.',
     flavourNotes: ['Premium tequila', 'Natural flavours', 'Vibrant finish'],
     color: '#6B8B14',
     accentLight: '#A0C020',
-    image: null,
+    image: '/products/tequila-mix.jpg',
+    comingSoon: false,
   },
   {
     id: 7,
@@ -92,6 +98,7 @@ export const products = [
     color: '#C41E1E',
     accentLight: '#E84040',
     image: '/products/shirley-temple.jpg',
+    comingSoon: false,
   },
   {
     id: 8,
@@ -100,11 +107,12 @@ export const products = [
     type: 'mocktail',
     price: 6000,
     tagline: 'Bright and refreshing.',
-    description: 'A citrus blend with tropical notes for the perfect pick-me-up. Sunshine in a can, vibrant, uplifting, and delicious.',
+    description: 'A citrus blend with tropical notes for the perfect pick-me-up. Vibrant, uplifting, and delicious.',
     flavourNotes: ['Orange citrus', 'Tropical passion', 'Uplifting fizz'],
     color: '#D4600A',
     accentLight: '#F0882A',
     image: null,
+    comingSoon: true,
   },
 ];
 
