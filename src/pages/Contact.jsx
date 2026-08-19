@@ -17,46 +17,28 @@ export default function Contact() {
   const r1 = useScrollReveal();
   const [form, setForm] = useState({ name: '', contact: '', message: '' });
   const [sent, setSent] = useState(false);
-  const [sending, setSending] = useState(false);
 
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
-  async function handleSubmit() {
+  function handleSubmit() {
     if (!form.name || !form.message) return;
-    setSending(true);
-
-    // 1. Open WhatsApp with pre-filled message
-    const waMsg = `Hi Thentic! My name is ${form.name}. ${form.message}${form.contact ? ` (Contact: ${form.contact})` : ''}`;
-    window.open(`https://wa.me/2349029378047?text=${encodeURIComponent(waMsg)}`, '_blank');
-
-    // 2. Also send to email via mailto (opens mail client as backup)
-    const emailSubject = `Website Enquiry from ${form.name}`;
-    const emailBody = `Name: ${form.name}\nContact: ${form.contact || 'Not provided'}\n\nMessage:\n${form.message}`;
-    const mailtoLink = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
-
-    // Small delay so WhatsApp opens first
-    setTimeout(() => {
-      window.location.href = mailtoLink;
-    }, 800);
-
-    setSending(false);
+    // Send to email only via mailto
+    const subject = `Website Enquiry from ${form.name}`;
+    const body = `Name: ${form.name}\nContact: ${form.contact || 'Not provided'}\n\nMessage:\n${form.message}`;
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     setSent(true);
     setTimeout(() => {
       setSent(false);
       setForm({ name: '', contact: '', message: '' });
-    }, 5000);
+    }, 4000);
   }
 
-  const inputStyle = {
-    border: '0.5px solid rgba(201,168,76,0.25)',
-    background: 'rgba(0,0,0,0.2)',
-  };
+  const inputStyle = { border: '0.5px solid rgba(201,168,76,0.25)', background: 'rgba(0,0,0,0.2)' };
 
   return (
     <main className="min-h-screen pt-28 pb-24">
       <div className="max-w-5xl mx-auto px-6">
 
-        {/* Header */}
         <div ref={r1} className="section-reveal text-center mb-16">
           <div className="font-cinzel text-[11px] tracking-[0.3em] uppercase text-gold/60 mb-4">Get In Touch</div>
           <h1 className="font-cinzel font-bold text-5xl tracking-widest text-cream mb-4">CONTACT US</h1>
@@ -66,13 +48,9 @@ export default function Contact() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
 
-          {/* Form */}
+          {/* Form — sends to email only */}
           <div className="p-8 rounded-xl" style={{ background: '#1E1208', border: '0.5px solid rgba(201,168,76,0.2)' }}>
-            <h2 className="font-cinzel font-bold text-lg tracking-wider text-cream mb-2">Send a message</h2>
-            <p className="font-body text-xs text-muted mb-6">
-              Your message will be sent to us via WhatsApp and email simultaneously.
-            </p>
-
+            <h2 className="font-cinzel font-bold text-lg tracking-wider text-cream mb-6">Send a message</h2>
             <div className="space-y-5">
               {[
                 { key: 'name', label: 'Your name', placeholder: 'e.g. Chidi Okonkwo', type: 'text' },
@@ -92,7 +70,6 @@ export default function Contact() {
                   />
                 </div>
               ))}
-
               <div>
                 <label className="block font-cinzel text-[10px] tracking-[0.2em] uppercase text-gold/60 mb-2">Message</label>
                 <textarea
@@ -106,71 +83,30 @@ export default function Contact() {
                   onBlur={e => e.target.style.borderColor = 'rgba(201,168,76,0.25)'}
                 />
               </div>
-
               <button
                 onClick={handleSubmit}
-                disabled={sending || !form.name || !form.message}
+                disabled={!form.name || !form.message}
                 className="btn-primary w-full"
-                style={{ opacity: (sending || (!form.name || !form.message)) ? 0.6 : 1 }}
+                style={{ opacity: (!form.name || !form.message) ? 0.6 : 1 }}
               >
-                {sent ? '✓ Message Sent' : sending ? 'Sending...' : 'Send Message'}
+                {sent ? '✓ Opening your email...' : 'Send Message'}
               </button>
-
-              {/* Dual send note */}
-              <div className="flex items-start gap-3 p-3 rounded-sm" style={{ background: 'rgba(201,168,76,0.05)', border: '0.5px solid rgba(201,168,76,0.1)' }}>
-                <span className="text-gold/40 text-xs mt-0.5">✦</span>
-                <p className="font-body text-[11px] text-muted leading-relaxed">
-                  Sends via WhatsApp and opens your email app to {CONTACT_EMAIL} at the same time.
-                </p>
-              </div>
             </div>
           </div>
 
-          {/* Contact info cards */}
+          {/* Contact info */}
           <div className="space-y-4">
             {[
-              {
-                icon: MessageCircle,
-                label: 'WhatsApp',
-                value: '+234 902 937 8047',
-                sub: 'Tap to message us directly',
-                color: '#25D366',
-                href: getWhatsAppLink(),
-              },
-              {
-                icon: Mail,
-                label: 'Email',
-                value: CONTACT_EMAIL,
-                sub: 'We respond within 24 hours',
-                color: '#C9A84C',
-                href: `mailto:${CONTACT_EMAIL}`,
-              },
-              {
-                icon: IgIcon,
-                label: 'Instagram',
-                value: '@thenticmix',
-                sub: 'Follow us and DM for orders',
-                color: '#E1306C',
-                href: 'https://instagram.com/thenticmix',
-              },
-              {
-                icon: MapPin,
-                label: 'Location',
-                value: 'Lagos, Nigeria',
-                sub: 'Delivery available across Lagos',
-                color: '#C9A84C',
-                href: null,
-              },
+              { icon: MessageCircle, label: 'WhatsApp', value: '+234 902 937 8047', sub: 'Tap to message us directly', color: '#25D366', href: getWhatsAppLink() },
+              { icon: Mail, label: 'Email', value: CONTACT_EMAIL, sub: 'We respond within 24 hours', color: '#C9A84C', href: `mailto:${CONTACT_EMAIL}` },
+              { icon: IgIcon, label: 'Instagram', value: '@thenticmix', sub: 'Follow us and DM for orders', color: '#E1306C', href: 'https://instagram.com/thenticmix' },
+              { icon: MapPin, label: 'Location', value: 'Lagos, Nigeria', sub: 'Delivery available across Lagos', color: '#C9A84C', href: null },
             ].map(({ icon: Icon, label, value, sub, color, href }) => {
               const card = (
-                <div
-                  className="flex items-center gap-5 p-5 rounded-xl transition-all duration-300"
-                  style={{ background: '#1E1208', border: '0.5px solid rgba(201,168,76,0.15)' }}
-                >
-                  <div
-                    className="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0"
-                    style={{ background: `${color}18` }}
-                  >
+                <div className="flex items-center gap-5 p-5 rounded-xl transition-all duration-300"
+                  style={{ background: '#1E1208', border: '0.5px solid rgba(201,168,76,0.15)' }}>
+                  <div className="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0"
+                    style={{ background: `${color}18` }}>
                     <Icon size={18} color={color} />
                   </div>
                   <div>
@@ -178,16 +114,11 @@ export default function Contact() {
                     <div className="font-body text-sm text-cream font-medium">{value}</div>
                     {sub && <div className="font-body text-[11px] text-muted mt-0.5">{sub}</div>}
                   </div>
-                  {href && (
-                    <div className="ml-auto text-gold/30 text-sm">→</div>
-                  )}
+                  {href && <div className="ml-auto text-gold/30 text-sm">→</div>}
                 </div>
               );
-
               return href ? (
-                <a
-                  key={label}
-                  href={href}
+                <a key={label} href={href}
                   target={href.startsWith('mailto') ? '_self' : '_blank'}
                   rel="noopener noreferrer"
                   className="block hover:-translate-y-0.5 transition-transform duration-200"
@@ -196,9 +127,7 @@ export default function Contact() {
                 >
                   {card}
                 </a>
-              ) : (
-                <div key={label}>{card}</div>
-              );
+              ) : <div key={label}>{card}</div>;
             })}
           </div>
         </div>

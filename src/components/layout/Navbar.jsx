@@ -2,13 +2,13 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { getWhatsAppLink } from '../../data/products';
-import logo from '../../assets/logo.jpg';
 
 const links = [
   { to: '/', label: 'Home' },
   { to: '/products', label: 'The Mix' },
   { to: '/about', label: 'Our Story' },
   { to: '/order', label: 'Order' },
+  { to: '/contact', label: 'Contact' },
 ];
 
 export default function Navbar() {
@@ -48,23 +48,13 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
 
-          {/* Logo */}
+          {/* Logo — transparent PNG from public folder */}
           <Link to="/" className="flex items-center gap-3 group">
-            <div
-              className="rounded-full overflow-hidden flex-shrink-0 transition-all duration-300 group-hover:ring-2 group-hover:ring-gold/40"
-              style={{
-                width: 48,
-                height: 48,
-                background: '#fff',
-                padding: 2,
-              }}
-            >
-              <img
-                src={logo}
-                alt="Thentic Liquor"
-                style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }}
-              />
-            </div>
+            <img
+              src="/logo.png"
+              alt="Thentic Liquor"
+              style={{ width: 48, height: 48, objectFit: 'contain' }}
+            />
             <div className="flex flex-col leading-none">
               <span className="font-cinzel font-bold text-base tracking-[0.2em] gold-text">THENTIC</span>
               <span className="font-script italic text-[11px] text-gold/60 tracking-widest">Liquor</span>
@@ -72,7 +62,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop links */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-7">
             {links.map(l => (
               <Link
                 key={l.to}
@@ -118,10 +108,7 @@ export default function Navbar() {
       <div
         style={{
           position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
+          top: 0, left: 0, right: 0, bottom: 0,
           zIndex: 9998,
           background: 'rgba(13,13,13,0.98)',
           backdropFilter: 'blur(16px)',
@@ -138,11 +125,9 @@ export default function Navbar() {
           transition: 'opacity 0.3s ease, transform 0.3s ease',
         }}
       >
-        {/* Logo inside mobile menu */}
+        {/* Logo in mobile menu */}
         <div className="flex items-center gap-3 mb-8">
-          <div className="rounded-full overflow-hidden" style={{ width: 44, height: 44, background: '#fff', padding: 2 }}>
-            <img src={logo} alt="Thentic Liquor" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }} />
-          </div>
+          <img src="/logo.png" alt="Thentic Liquor" style={{ width: 44, height: 44, objectFit: 'contain' }} />
           <div>
             <div className="font-cinzel font-bold text-base tracking-[0.2em] gold-text">THENTIC</div>
             <div className="font-script italic text-[11px] text-gold/60">Liquor</div>

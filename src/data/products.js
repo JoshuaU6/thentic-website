@@ -13,7 +13,7 @@ export const products = [
     flavourNotes: ['Vodka, Gin, Rum, Tequila', 'Fresh citrus', 'Cola finish'],
     color: '#8B6914',
     accentLight: '#D4A820',
-    image: '/src/assets/products/lagos-long-island.jpg',
+    image: '/products/lagos-long-island.jpg',
   },
   {
     id: 2,
@@ -39,7 +39,7 @@ export const products = [
     flavourNotes: ['Smooth whiskey', 'Zesty lemon', 'Balanced bitters'],
     color: '#A0501A',
     accentLight: '#D4782A',
-    image: '/src/assets/products/whiskey-sour.jpg',
+    image: '/products/whiskey-sour.jpg',
   },
   {
     id: 4,
@@ -52,7 +52,7 @@ export const products = [
     flavourNotes: ['Vodka base', 'Citrus notes', 'Clean finish'],
     color: '#1A2E5C',
     accentLight: '#3A5EA0',
-    image: '/src/assets/products/ikoyi-nights.jpg',
+    image: '/products/ikoyi-nights.jpg',
   },
   {
     id: 5,
@@ -65,7 +65,7 @@ export const products = [
     flavourNotes: ['White rum', 'Passion fruit', 'Fresh mint'],
     color: '#7B1A8B',
     accentLight: '#B040D0',
-    image: '/src/assets/products/passion-fruit-mojito.jpg',
+    image: '/products/passion-fruit-mojito.jpg',
   },
   {
     id: 6,
@@ -91,7 +91,7 @@ export const products = [
     flavourNotes: ['Cherry', 'Citrus', 'Sparkling finish'],
     color: '#C41E1E',
     accentLight: '#E84040',
-    image: '/src/assets/products/shirley-temple.jpg',
+    image: '/products/shirley-temple.jpg',
   },
   {
     id: 8,
