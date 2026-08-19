@@ -50,11 +50,21 @@ export default function Navbar() {
 
           {/* Logo — transparent PNG from public folder */}
           <Link to="/" className="flex items-center gap-3 group">
-            <img
-              src="/logo.png"
-              alt="Thentic Liquor"
-              style={{ width: 48, height: 48, objectFit: 'contain' }}
-            />
+            <div style={{
+              width: 52, height: 52, borderRadius: '50%',
+              background: '#ffffff',
+              padding: 3,
+              flexShrink: 0,
+              boxShadow: '0 0 0 1.5px rgba(201,168,76,0.5), 0 2px 12px rgba(0,0,0,0.4)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              overflow: 'hidden',
+            }}>
+              <img
+                src="/logo.png"
+                alt="Thentic Liquor"
+                style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+              />
+            </div>
             <div className="flex flex-col leading-none">
               <span className="font-cinzel font-bold text-base tracking-[0.2em] gold-text">THENTIC</span>
               <span className="font-script italic text-[11px] text-gold/60 tracking-widest">Liquor</span>
@@ -127,7 +137,9 @@ export default function Navbar() {
       >
         {/* Logo in mobile menu */}
         <div className="flex items-center gap-3 mb-8">
-          <img src="/logo.png" alt="Thentic Liquor" style={{ width: 44, height: 44, objectFit: 'contain' }} />
+          <div style={{ width: 48, height: 48, borderRadius: '50%', background: '#ffffff', padding: 3, flexShrink: 0, boxShadow: '0 0 0 1.5px rgba(201,168,76,0.5)', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <img src="/logo.png" alt="Thentic Liquor" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+          </div>
           <div>
             <div className="font-cinzel font-bold text-base tracking-[0.2em] gold-text">THENTIC</div>
             <div className="font-script italic text-[11px] text-gold/60">Liquor</div>

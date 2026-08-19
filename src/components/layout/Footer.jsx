@@ -21,11 +21,21 @@ export default function Footer() {
           {/* Brand with transparent PNG logo */}
           <div>
             <Link to="/" className="flex items-center gap-3 mb-5 w-fit group">
-              <img
-                src="/logo.png"
-                alt="Thentic Liquor"
-                style={{ width: 56, height: 56, objectFit: 'contain' }}
-              />
+              <div style={{
+                width: 60, height: 60, borderRadius: '50%',
+                background: '#ffffff',
+                padding: 4,
+                flexShrink: 0,
+                boxShadow: '0 0 0 1.5px rgba(201,168,76,0.4), 0 2px 16px rgba(0,0,0,0.5)',
+                overflow: 'hidden',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+              }}>
+                <img
+                  src="/logo.png"
+                  alt="Thentic Liquor"
+                  style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                />
+              </div>
               <div className="flex flex-col leading-none">
                 <span className="font-cinzel font-bold text-lg tracking-[0.2em] gold-text">THENTIC</span>
                 <span className="font-script italic text-xs text-gold/60 tracking-widest mt-0.5">Liquor</span>
