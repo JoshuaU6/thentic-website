@@ -75,13 +75,25 @@ export default function ProductDetail() {
           </Link>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            {/* Can */}
+            {/* Product image or CSS can */}
             <div className="flex justify-center relative">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-64 h-64 rounded-full blur-3xl opacity-25"
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <div className="w-64 h-64 rounded-full blur-3xl opacity-20"
                   style={{ background: product.color }} />
               </div>
-              <BigCan product={product} />
+              {product.image ? (
+                <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl"
+                  style={{ maxWidth: 400, width: '100%', border: `0.5px solid ${product.color}44` }}>
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    style={{ width: '100%', height: 480, objectFit: 'cover', objectPosition: 'center' }}
+                  />
+                  <div className="absolute inset-0" style={{ background: `linear-gradient(to top, ${product.color}33 0%, transparent 60%)` }} />
+                </div>
+              ) : (
+                <BigCan product={product} />
+              )}
             </div>
 
             {/* Info */}

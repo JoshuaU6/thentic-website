@@ -45,16 +45,12 @@ export default function ProductCard({ product, staggerIndex = 0 }) {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-
     const delay = staggerIndex * 80;
-
-    // Already visible — show with just a delay
     const rect = el.getBoundingClientRect();
     if (rect.top < window.innerHeight) {
       setTimeout(() => el.classList.add('visible'), delay);
       return;
     }
-
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -64,7 +60,6 @@ export default function ProductCard({ product, staggerIndex = 0 }) {
       },
       { threshold: 0.05, rootMargin: '0px 0px -20px 0px' }
     );
-
     observer.observe(el);
     return () => observer.disconnect();
   }, [staggerIndex]);
@@ -89,14 +84,39 @@ export default function ProductCard({ product, staggerIndex = 0 }) {
           e.currentTarget.style.borderColor = 'rgba(201,168,76,0.2)';
         }}
       >
-        {/* Can image area */}
+        {/* Product image or CSS can fallback */}
         <div
-          className="flex items-end justify-center pt-8 pb-4 relative overflow-hidden"
-          style={{ background: `linear-gradient(160deg, ${product.color}22, transparent 60%)`, minHeight: 200 }}
+          className="flex items-end justify-center relative overflow-hidden"
+          style={{
+            background: `linear-gradient(160deg, ${product.color}22, transparent 60%)`,
+            minHeight: 220,
+          }}
         >
-          <div className="relative can-tilt">
-            <MiniCan product={product} size={90} />
-          </div>
+          {product.image ? (
+            <img
+              src={product.image}
+              alt={product.name}
+              style={{
+                width: '100%',
+                height: 220,
+                objectFit: 'cover',
+                objectPosition: 'center top',
+                transition: 'transform 0.5s ease',
+              }}
+              className="group-hover:scale-105"
+            />
+          ) : (
+            <div className="flex items-end justify-center pb-4 w-full h-full" style={{ minHeight: 220 }}>
+              <div className="can-tilt">
+                <MiniCan product={product} size={90} />
+              </div>
+            </div>
+          )}
+
+          {/* Gradient overlay on real images */}
+          {product.image && (
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(30,18,8,0.9) 0%, rgba(30,18,8,0.2) 50%, transparent 100%)' }} />
+          )}
         </div>
 
         {/* Info */}
