@@ -135,17 +135,6 @@ export default function Navbar() {
           transition: 'opacity 0.3s ease, transform 0.3s ease',
         }}
       >
-        {/* Logo in mobile menu */}
-        <div className="flex items-center gap-3 mb-8">
-          <div style={{ width: 48, height: 48, borderRadius: '50%', background: '#ffffff', padding: 3, flexShrink: 0, boxShadow: '0 0 0 1.5px rgba(201,168,76,0.5)', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <img src="/logo.png" alt="Thentic Liquor" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
-          </div>
-          <div>
-            <div className="font-cinzel font-bold text-base tracking-[0.2em] gold-text">THENTIC</div>
-            <div className="font-script italic text-[11px] text-gold/60">Liquor</div>
-          </div>
-        </div>
-
         <div className="flex flex-col gap-6">
           {links.map(l => (
             <Link
